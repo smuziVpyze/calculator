@@ -22,4 +22,6 @@ def convert():
         else:
             result = value  # Если выбран один и тот же тип единиц
 
-
+        result_label.config(text=f"Результат: {result:.2f}")
+    except ValueError:
+        result_label.config(text="Пожалуйста, введите корректное число")
