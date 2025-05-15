@@ -25,3 +25,39 @@ def convert():
         result_label.config(text=f"Результат: {result:.2f}")
     except ValueError:
         result_label.config(text="Пожалуйста, введите корректное число")
+
+# Создание главного окна
+root = tk.Tk()
+root.title("Калькулятор перевода единиц измерения")
+
+# Создание интерфейса
+frame = ttk.Frame(root, padding="10")
+frame.grid(row=0, column=0)
+
+entry_label = ttk.Label(frame, text="Введите значение:")
+entry_label.grid(row=0, column=0)
+
+entry = ttk.Entry(frame, width=15)
+entry.grid(row=0, column=1)
+
+from_unit_label = ttk.Label(frame, text="Единица измерения (от):")
+from_unit_label.grid(row=1, column=0)
+
+from_unit_combobox = ttk.Combobox(frame, values=["Метры", "Километры", "Граммы", "Килограммы", "Цельсий", "Фаренгейт"])
+from_unit_combobox.grid(row=1, column=1)
+from_unit_combobox.set("Метры")
+
+to_unit_label = ttk.Label(frame, text="Единица измерения (в):")
+to_unit_label.grid(row=2, column=0)
+
+to_unit_combobox = ttk.Combobox(frame, values=["Метры", "Километры", "Граммы", "Килограммы", "Цельсий", "Фаренгейт"])
+to_unit_combobox.grid(row=2, column=1)
+to_unit_combobox.set("Километры")
+
+convert_button = ttk.Button(frame, text="Перевести", command=convert)
+convert_button.grid(row=3, column=0, columnspan=2)
+
+result_label = ttk.Label(frame, text="Результат: ")
+result_label.grid(row=4, column=0, columnspan=2)
+
+root.mainloop()
